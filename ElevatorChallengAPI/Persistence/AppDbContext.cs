@@ -1,4 +1,5 @@
 ﻿using ElevatorChallengAPI.Domain;
+using ElevatorChallengAPI.Enums;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 
@@ -20,7 +21,7 @@ namespace ElevatorChallengAPI.Persistence
                 new Building { Id = 1, Name = "Building 1", Address = "123 Main St", Elevators = [] });
             modelBuilder.Entity<Elevator>().HasKey(e => e.Id);
             modelBuilder.Entity<Elevator>().HasData(
-                new Elevator { Id = 1, BuildingId = 1, Name = "Elevator 1", CurrentFloor = 1});
+                new Elevator { Id = 1, BuildingId = 1, Name = "Elevator 1", CurrentFloor = Floor.Ground, Status = ElevatorStatus.Working });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
