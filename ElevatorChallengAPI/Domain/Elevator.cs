@@ -8,7 +8,7 @@ namespace ElevatorChallengAPI.Domain
         public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public Floor CurrentFloor { get; set; }
-        public ElevatorStatusEnum Status { get; set; } = ElevatorStatusEnum.Working;
+        public ElevatorStatus Status { get; set; } = ElevatorStatus.Working;
         
         public int BuildingId { get; set; }
 
@@ -17,7 +17,7 @@ namespace ElevatorChallengAPI.Domain
             
         }
 
-        public Elevator(int id, string name, Floor currentFloor, ElevatorStatusEnum status, int buildingId)
+        public Elevator(int id, string name, Floor currentFloor, ElevatorStatus status, int buildingId)
         {
             Id = id;
             Name = name;

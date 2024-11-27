@@ -1,6 +1,6 @@
 ﻿namespace ElevatorChallengAPI.Enums
 {
-    public enum ElevatorStatusEnum
+    public enum ElevatorStatus
     {
         Working,
         Repair,
