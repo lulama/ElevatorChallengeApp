@@ -2,6 +2,6 @@
 
 namespace ElevatorChallengAPI.Features.Buildings.Dtos
 {
-    public record BuildingDto(int Id, string Name, string Address, List<ElevatorDto> Elevators);
+    public record BuildingDto(Guid Id, string Name, string Address, List<ElevatorDto> Elevators);
     
 }

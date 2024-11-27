@@ -5,7 +5,7 @@ namespace ElevatorChallengAPI.Domain
 {
     public class Elevator : AuditDetails
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public Floor CurrentFloor { get; set; }
         public ElevatorStatus Status { get; set; } = ElevatorStatus.Working;
@@ -17,9 +17,9 @@ namespace ElevatorChallengAPI.Domain
             
         }
 
-        public Elevator(int id, string name, Floor currentFloor, ElevatorStatus status, int buildingId)
+        public Elevator(string name, Floor currentFloor, ElevatorStatus status, int buildingId)
         {
-            Id = id;
+           
             Name = name;
             CurrentFloor = currentFloor;
             Status = status;

@@ -1,3 +1,4 @@
+using ElevatorChallengAPI.Features.Buildings.Commands.Create;
 using ElevatorChallengAPI.Features.Buildings.Queries.List;
 using ElevatorChallengAPI.Persistence;
 using MediatR;
@@ -28,6 +29,12 @@ app.MapGet("/buildings", async (ISender mediatr) =>
     return Results.Ok(products);
 });
 
+app.MapPost("/buildings", async (CreateBuildingCommand command, ISender mediatr) =>
+{
+    var buildingId = await mediatr.Send(command);
+    if (Guid.Empty == buildingId) return Results.BadRequest();
+    return Results.Created($"/buildings/{buildingId}", new { id = buildingId });
+});
 
 
 app.Run();
