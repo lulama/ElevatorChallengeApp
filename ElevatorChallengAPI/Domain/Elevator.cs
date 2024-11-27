@@ -8,8 +8,9 @@ namespace ElevatorChallengAPI.Domain
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public Floor CurrentFloor { get; set; }
-        public ElevatorStatus Status { get; set; } = ElevatorStatus.Working;
-        
+        public int Capacity { get; set; }
+        public ElevatorStatus ElevatorStatus { get; set; } = ElevatorStatus.Working;
+        public Status Status { get; set; } = Status.Active;
         public int BuildingId { get; set; }
 
         public Elevator()
@@ -17,12 +18,14 @@ namespace ElevatorChallengAPI.Domain
             
         }
 
-        public Elevator(string name, Floor currentFloor, ElevatorStatus status, int buildingId)
+        public Elevator(string name, Floor currentFloor, int capacity, Status status, int buildingId)
         {
            
             Name = name;
             CurrentFloor = currentFloor;
             Status = status;
+            Capacity = capacity;
+
             BuildingId = buildingId;
         }
 

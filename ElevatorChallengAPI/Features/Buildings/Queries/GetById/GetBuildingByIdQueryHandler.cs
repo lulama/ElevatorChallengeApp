@@ -5,11 +5,11 @@ using MediatR;
 
 namespace ElevatorChallengAPI.Features.Buildings.Queries.GetByName
 {
-    public class GetBuildingByNameQueryHandler(AppDbContext context): IRequestHandler<GetBuildingByNameQuery, BuildingDto>
+    public class GetBuildingByIdQueryHandler(AppDbContext context): IRequestHandler<GetBuildingByIdQuery, BuildingDto>
     {
-        public async Task<BuildingDto> Handle(GetBuildingByNameQuery request, CancellationToken cancellationToken)
+        public async Task<BuildingDto> Handle(GetBuildingByIdQuery request, CancellationToken cancellationToken)
         {
-            var building = await context.Buildings.FindAsync(request.Name);
+            var building = await context.Buildings.FindAsync(request.Id);
             if (building == null)
             {
                 return null;

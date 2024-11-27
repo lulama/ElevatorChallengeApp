@@ -1,6 +1,10 @@
 ﻿namespace ElevatorChallengAPI.Enums
 {
-    public class ElevatorMoveStatusEnum
+    public enum ElevatorMoveStatus
     {
+        MovingUp,
+        MovingDown,
+        Stopped
     }
+    
 }

@@ -18,10 +18,10 @@ namespace ElevatorChallengAPI.Persistence
         {
             modelBuilder.Entity<Building>().HasKey(b => b.Id);
             modelBuilder.Entity<Building>().HasData(
-                new Building { Id = Guid.NewGuid(), Name = "Building 1", Address = "123 Main St", Elevators = [] });
+                new Building { Id = Guid.NewGuid(), Name = "Building 1", Address = "123 Main St", Status = Status.Active, Elevators = [] });
             modelBuilder.Entity<Elevator>().HasKey(e => e.Id);
             modelBuilder.Entity<Elevator>().HasData(
-                new Elevator { Id = Guid.NewGuid(), BuildingId = 1, Name = "Elevator 1", CurrentFloor = Floor.Ground, Status = ElevatorStatus.Working });
+                new Elevator { Id = Guid.NewGuid(), BuildingId = 1, Name = "Elevator 1", CurrentFloor = Floor.Ground, Status = Status.Active, ElevatorStatus = ElevatorStatus.Working });
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

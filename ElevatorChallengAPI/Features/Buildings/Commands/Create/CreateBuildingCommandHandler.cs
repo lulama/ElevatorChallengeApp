@@ -8,7 +8,7 @@ namespace ElevatorChallengAPI.Features.Buildings.Commands.Create
     {
         public async Task<Guid> Handle(CreateBuildingCommand request, CancellationToken cancellationToken)
         {
-            var building = new Building(request.Name, request.Address,request.Elevators);
+            var building = new Building(request.Name, request.Address, request.Status, request.Elevators);
             context.Buildings.Add(building);
             await context.SaveChangesAsync(cancellationToken);
             return building.Id;

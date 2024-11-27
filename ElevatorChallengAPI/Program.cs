@@ -1,4 +1,7 @@
 using ElevatorChallengAPI.Features.Buildings.Commands.Create;
+using ElevatorChallengAPI.Features.Buildings.Commands.Delete;
+using ElevatorChallengAPI.Features.Buildings.Commands.Update;
+using ElevatorChallengAPI.Features.Buildings.Queries.GetByName;
 using ElevatorChallengAPI.Features.Buildings.Queries.List;
 using ElevatorChallengAPI.Persistence;
 using MediatR;
@@ -36,6 +39,18 @@ app.MapPost("/buildings", async (CreateBuildingCommand command, ISender mediatr)
     return Results.Created($"/buildings/{buildingId}", new { id = buildingId });
 });
 
+app.MapDelete("/buildings/{id:guid}", async (Guid id, ISender mediatr) =>
+{
+    await mediatr.Send(new DeleteBuildingCommand(id));
+    return Results.NoContent();
+});
+
+app.MapPut("/buildings/{id:guid}", async (Guid id,string name, UpdateBuildingCommand command, ISender mediatr) =>
+{
+    var building = await mediatr.Send(new GetBuildingByIdQuery(id));
+    await mediatr.Send(command);
+    return Results.Ok(building);
+});
 
 app.Run();
 
