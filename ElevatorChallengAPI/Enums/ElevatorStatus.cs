@@ -3,7 +3,6 @@
     public enum ElevatorStatus
     {
         Working,
-        Repair,
         Damaged
     }
 }

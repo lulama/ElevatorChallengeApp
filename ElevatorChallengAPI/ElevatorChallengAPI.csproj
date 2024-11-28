@@ -15,15 +15,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Elevators\Commands\Create\" />
+    <Folder Include="Features\ElevatorRequests\Commands\Delete\" />
+    <Folder Include="Features\ElevatorRequests\Commands\Update\" />
     <Folder Include="Features\Elevators\Commands\Delete\" />
     <Folder Include="Features\Elevators\Commands\Update\" />
     <Folder Include="Features\Elevators\Queries\Get\" />
-    <Folder Include="Features\Elevators\Queries\List\" />
-    <Folder Include="Features\Buildings\Commands\Create\" />
-    <Folder Include="Features\Buildings\Commands\Delete\" />
-    <Folder Include="Features\Buildings\Commands\Update\" />
-    <Folder Include="Features\Buildings\Queries\Get\" />
   </ItemGroup>
 
 </Project>
