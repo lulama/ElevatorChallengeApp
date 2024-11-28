@@ -10,16 +10,16 @@ namespace ElevatorChallengAPI.Domain
         public Guid Id { get; set; }
         public string Name { get; set; } = string.Empty;
         public Floor CurrentFloor { get; set; }
-        public int Capacity { get; set; }
+        public int Capacity { get; set; } = 2;
         public int CurrentCapacity { get; set; }
         public ElevatorStatus ElevatorStatus { get; set; } = ElevatorStatus.Working;
         public Status Status { get; set; } = Status.Active;
         public int MinFloor { get; set; } = 1;
         public int MaxFloor { get; set; } = 5;
-        public Queue<int> Requests = new Queue<int>();  
-        public List<int> Occupants = new List<int>();    
+        public Queue<int> Requests = new Queue<int>();
         public Guid BuildingId { get; set; }
 
+        public List<int> Occupants { get; set; } = new List<int>();
         public Elevator()
         {
 

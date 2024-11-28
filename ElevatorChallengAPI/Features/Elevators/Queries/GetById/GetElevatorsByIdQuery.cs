@@ -5,7 +5,7 @@ using MediatR;
 
 namespace ElevatorChallengAPI.Features.Elevators.Queries.GetById
 {
-    public record GetElevatorsByIdQuery(Guid Id, string Name, Floor CurrentFloor, ElevatorStatus ElevatorStatus, Status Status, Guid BuildingId) : IRequest<ElevatorDto>;
+    public record GetElevatorsByIdQuery(Guid Id, string Name, int Capacity,Floor CurrentFloor, ElevatorStatus ElevatorStatus, Status Status, Guid BuildingId) : IRequest<ElevatorDto>;
 
 
 }

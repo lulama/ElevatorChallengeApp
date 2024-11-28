@@ -15,7 +15,7 @@ namespace ElevatorChallengAPI.Features.Buildings.Queries.GetByName
             {
                 return null;
             }
-            return new ElevatorDto(request.Id, request.Name,request.CurrentFloor,request.ElevatorStatus,request.Status, request.BuildingId);
+            return new ElevatorDto(request.Id, request.Name,request.Capacity, request.CurrentFloor,request.ElevatorStatus,request.Status, request.BuildingId);
         }
     }
 }

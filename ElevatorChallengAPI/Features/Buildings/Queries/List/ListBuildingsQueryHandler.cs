@@ -12,7 +12,7 @@ namespace ElevatorChallengAPI.Features.Buildings.Queries.List
         {
             return await context.Buildings
                 .Select(b => new BuildingDto(b.Id, b.Name, b.Address, b.Status, b.Elevators
-                    .Select(e => new ElevatorDto(e.Id, e.Name, e.CurrentFloor, e.ElevatorStatus,e.Status, e.BuildingId))
+                    .Select(e => new ElevatorDto(e.Id, e.Name,e.Capacity, e.CurrentFloor, e.ElevatorStatus,e.Status, e.BuildingId))
                     .ToList() 
                 ))
                 .ToListAsync(cancellationToken);

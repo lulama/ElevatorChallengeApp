@@ -20,6 +20,7 @@
     <Folder Include="Features\Elevators\Commands\Delete\" />
     <Folder Include="Features\Elevators\Commands\Update\" />
     <Folder Include="Features\Elevators\Queries\Get\" />
+    <Folder Include="Services\" />
   </ItemGroup>
 
 </Project>

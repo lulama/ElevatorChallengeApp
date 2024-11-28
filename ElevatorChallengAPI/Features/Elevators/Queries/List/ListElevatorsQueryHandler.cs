@@ -12,7 +12,7 @@ namespace ElevatorChallengAPI.Features.Buildings.Queries.List
         public async Task<List<ElevatorDto>> Handle(ListElevatorsQuery request, CancellationToken cancellationToken)
         {
             return await context.Elevators
-                .Select(e => new ElevatorDto(e.Id, e.Name,e.CurrentFloor,e.ElevatorStatus,e.Status,e.BuildingId))
+                .Select(e => new ElevatorDto(e.Id, e.Name,e.Capacity,e.CurrentFloor,e.ElevatorStatus,e.Status,e.BuildingId))
                .ToListAsync(cancellationToken);
               
                

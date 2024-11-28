@@ -4,6 +4,7 @@ using ElevatorChallengAPI.Features.Buildings.Commands.Update;
 using ElevatorChallengAPI.Features.Buildings.Queries.GetByName;
 using ElevatorChallengAPI.Features.Buildings.Queries.List;
 using ElevatorChallengAPI.Features.ElevatorRequests.Commands.Create;
+using ElevatorChallengAPI.Features.ElevatorRequests.Commands.Exit;
 using ElevatorChallengAPI.Features.ElevatorRequests.Queries.List;
 using ElevatorChallengAPI.Features.Elevators.Commands.Create;
 using ElevatorChallengAPI.Features.Elevators.Queries.List;
@@ -76,6 +77,13 @@ app.MapPost("/elevatorsrequests", async (RequestElevatorCommand command, ISender
     var elevatorRequestId = await mediatr.Send(command);
     if (Guid.Empty == elevatorRequestId) return Results.BadRequest();
     return Results.Created($"/elevatorsrequests/{elevatorRequestId}", new { id = elevatorRequestId });
+});
+
+app.MapPut("/elevatorsrequests", async (ExitElevatorCommand command, ISender mediatr) =>
+{
+    var elevatorId = await mediatr.Send(command);
+    if (Guid.Empty == elevatorId) return Results.BadRequest();
+    return Results.Created($"/elevatorsrequests/{elevatorId}", new { id = elevatorId });
 });
 app.MapGet("/elevatorsrequests", async (ISender mediatr) =>
 {

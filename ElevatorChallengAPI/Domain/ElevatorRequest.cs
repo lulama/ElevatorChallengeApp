@@ -25,19 +25,7 @@ namespace ElevatorChallengAPI.Domain
             Floor = floor;
         }
 
-        // Add a request
-        public void RequestElevator(int floor)
-        {
-
-            if (!Requests.Contains(floor))
-            {
-                Requests.Enqueue(floor);
-                Console.WriteLine($"Floor {floor} added to the queue.");
-            }
-            else
-            {
-                Console.WriteLine($"Floor {floor} is already in the queue.");
-            }
-        }
+        
+        
     }
 }

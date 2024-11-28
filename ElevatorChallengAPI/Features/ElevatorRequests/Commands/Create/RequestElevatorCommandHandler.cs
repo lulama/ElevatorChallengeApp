@@ -19,7 +19,7 @@ namespace ElevatorChallengAPI.Features.ElevatorRequests.Commands.Create
             var elevator = await _context.Elevators.FindAsync(request.ElevatorId);
             if ((int)request.Floor < elevator.MinFloor || (int)request.Floor > elevator.MaxFloor)
             {
-                throw new ArgumentException("Floor is out of range", nameof(request.Floor));
+                throw new ArgumentException("Floor is out of range", nameof(request));
                
             }
 
@@ -34,7 +34,15 @@ namespace ElevatorChallengAPI.Features.ElevatorRequests.Commands.Create
             {
                 return Guid.Empty;
             }
-           
+
+            if (elevator.Occupants.Count > elevator.Capacity)
+            {
+                throw new ArgumentException("Elevator is full, try later", nameof(request));
+              
+            }
+            elevator.Occupants.Add(request.PersonId);           
+            _context.Elevators.Update(elevator);
+            await _context.SaveChangesAsync(cancellationToken);
             var elevatorRequest = new ElevatorRequest(Guid.NewGuid(),request.ElevatorId, request.PersonId,request.Floor);
             _context.ElevatorRequests.Add(elevatorRequest);
             await _context.SaveChangesAsync(cancellationToken);

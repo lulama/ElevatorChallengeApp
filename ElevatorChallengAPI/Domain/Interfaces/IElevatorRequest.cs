@@ -9,6 +9,6 @@ namespace ElevatorChallengAPI.Domain.Interfaces
         Guid Id { get; set; }
         int PersonId { get; set; }
 
-        void RequestElevator(int floor);
+        
     }
 }

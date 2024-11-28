@@ -14,7 +14,7 @@ namespace ElevatorChallengAPI.Features.Buildings.Queries.GetByName
             {
                 return null;
             }
-            return new BuildingDto(building.Id, building.Name, building.Address,building.Status, building.Elevators.Select(request => new ElevatorDto(request.Id, request.Name, request.CurrentFloor, request.ElevatorStatus,request.Status, request.BuildingId)).ToList());
+            return new BuildingDto(building.Id, building.Name, building.Address,building.Status, building.Elevators.Select(request => new ElevatorDto(request.Id, request.Name,request.Capacity, request.CurrentFloor, request.ElevatorStatus,request.Status, request.BuildingId)).ToList());
         }
     }
 }
