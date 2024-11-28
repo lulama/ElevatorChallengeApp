@@ -3,6 +3,8 @@ using ElevatorChallengAPI.Features.Buildings.Commands.Delete;
 using ElevatorChallengAPI.Features.Buildings.Commands.Update;
 using ElevatorChallengAPI.Features.Buildings.Queries.GetByName;
 using ElevatorChallengAPI.Features.Buildings.Queries.List;
+using ElevatorChallengAPI.Features.ElevatorRequests.Commands.Create;
+using ElevatorChallengAPI.Features.ElevatorRequests.Queries.List;
 using ElevatorChallengAPI.Features.Elevators.Commands.Create;
 using ElevatorChallengAPI.Features.Elevators.Queries.List;
 using ElevatorChallengAPI.Persistence;
@@ -65,6 +67,20 @@ app.MapGet("/elevators", async (ISender mediatr) =>
 {
     var elevators = await mediatr.Send(new ListElevatorsQuery());
     return Results.Ok(elevators);
+});
+#endregion
+
+#region ElevatorReuests
+app.MapPost("/elevatorsrequests", async (RequestElevatorCommand command, ISender mediatr) =>
+{
+    var elevatorRequestId = await mediatr.Send(command);
+    if (Guid.Empty == elevatorRequestId) return Results.BadRequest();
+    return Results.Created($"/elevatorsrequests/{elevatorRequestId}", new { id = elevatorRequestId });
+});
+app.MapGet("/elevatorsrequests", async (ISender mediatr) =>
+{
+    var elevatorRequests = await mediatr.Send(new ListElevatorRequestsQuery());
+    return Results.Ok(elevatorRequests);
 });
 #endregion
 

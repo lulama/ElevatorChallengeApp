@@ -1,10 +1,11 @@
-﻿using ElevatorChallengAPI.Enums;
+﻿using ElevatorChallengAPI.Domain.Interfaces;
+using ElevatorChallengAPI.Enums;
 using ElevatorChallengAPI.Shared;
 using System.ComponentModel.DataAnnotations;
 
 namespace ElevatorChallengAPI.Domain
 {
-    public class Building : AuditDetails
+    public class Building : AuditDetails, IBuilding
     {
         public Guid Id { get; set; }
         [Key]
@@ -15,7 +16,7 @@ namespace ElevatorChallengAPI.Domain
 
         public Building()
         {
-            
+
         }
 
         public Building(string name, string address, Status status, List<Elevator> elevators)
@@ -26,8 +27,8 @@ namespace ElevatorChallengAPI.Domain
             Elevators = elevators;
         }
 
-       
+
     }
 
-    
+
 }
