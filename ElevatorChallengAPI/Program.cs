@@ -3,6 +3,8 @@ using ElevatorChallengAPI.Features.Buildings.Commands.Delete;
 using ElevatorChallengAPI.Features.Buildings.Commands.Update;
 using ElevatorChallengAPI.Features.Buildings.Queries.GetByName;
 using ElevatorChallengAPI.Features.Buildings.Queries.List;
+using ElevatorChallengAPI.Features.Elevators.Commands.Create;
+using ElevatorChallengAPI.Features.Elevators.Queries.List;
 using ElevatorChallengAPI.Persistence;
 using MediatR;
 using System.Reflection;
@@ -28,8 +30,8 @@ app.UseHttpsRedirection();
 
 app.MapGet("/buildings", async (ISender mediatr) =>
 {
-    var products = await mediatr.Send(new ListBuildingsQuery());
-    return Results.Ok(products);
+    var buildings = await mediatr.Send(new ListBuildingsQuery());
+    return Results.Ok(buildings);
 });
 
 app.MapPost("/buildings", async (CreateBuildingCommand command, ISender mediatr) =>
@@ -51,6 +53,20 @@ app.MapPut("/buildings/{id:guid}", async (Guid id,string name, UpdateBuildingCom
     await mediatr.Send(command);
     return Results.Ok(building);
 });
+
+#region Elevator
+app.MapPost("/elevators", async (CreateElevatorCommand command, ISender mediatr) =>
+{
+    var elevatorId = await mediatr.Send(command);
+    if (Guid.Empty == elevatorId) return Results.BadRequest();
+    return Results.Created($"/elevators/{elevatorId}", new { id = elevatorId });
+});
+app.MapGet("/elevators", async (ISender mediatr) =>
+{
+    var elevators = await mediatr.Send(new ListElevatorsQuery());
+    return Results.Ok(elevators);
+});
+#endregion
 
 app.Run();
 

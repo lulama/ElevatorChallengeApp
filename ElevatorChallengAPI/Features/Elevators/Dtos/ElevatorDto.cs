@@ -2,6 +2,6 @@
 
 namespace ElevatorChallengAPI.Features.Elevators.Dtos
 {
-    public record ElevatorDto(Guid Id, string Name, Floor CurrentFloor, ElevatorStatus ElevatorStatus, Status Status, int BuildingId);
+    public record ElevatorDto(Guid Id, string Name, Floor CurrentFloor, ElevatorStatus ElevatorStatus, Status Status, Guid BuildingId);
    
 }
