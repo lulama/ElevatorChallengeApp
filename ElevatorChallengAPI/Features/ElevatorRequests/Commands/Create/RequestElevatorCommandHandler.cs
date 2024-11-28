@@ -23,6 +23,8 @@ namespace ElevatorChallengAPI.Features.ElevatorRequests.Commands.Create
                
             }
 
+
+
             if  (!elevator.Requests.Contains((int)request.Floor))
             {
                 elevator.Requests.Enqueue((int)request.Floor);
