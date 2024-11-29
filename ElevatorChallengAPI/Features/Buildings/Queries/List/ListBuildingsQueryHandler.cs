@@ -6,11 +6,18 @@ using Microsoft.EntityFrameworkCore;
 using System.Linq; 
 namespace ElevatorChallengAPI.Features.Buildings.Queries.List
 {
-    public class ListBuildingsQueryHandler(AppDbContext context) : IRequestHandler<ListBuildingsQuery, List<BuildingDto>>
+    public class ListBuildingsQueryHandler : IRequestHandler<ListBuildingsQuery, List<BuildingDto>>
     {
+        private readonly AppDbContext _context;
+
+        public ListBuildingsQueryHandler(AppDbContext context)
+        {
+            _context = context;
+        }
+
         public async Task<List<BuildingDto>> Handle(ListBuildingsQuery request, CancellationToken cancellationToken)
         {
-            return await context.Buildings
+            return await _context.Buildings
                 .Select(b => new BuildingDto(b.Id, b.Name, b.Address, b.Status, b.Elevators
                     .Select(e => new ElevatorDto(e.Id, e.Name,e.Capacity, e.CurrentFloor, e.ElevatorStatus,e.Status, e.BuildingId))
                     .ToList() 
